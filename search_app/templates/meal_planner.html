@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}食事検索ページ{% endblock %}
+
+{% load static %}
+
+{% block content %}
+       
+<body>
+
+    <header>
+        <h1>Meal Planner</h1>
+        <nav>
+            <a href="{% url 'product_list' %}">商品一覧</a>
+            <a href="{% url 'product_create' %}">商品作成</a>
+            <a href="{% url 'search_view' %}">検索</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="product-form">
+            <h2>商品を作成</h2>
+            <form method="post" action="{% url 'product_create' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">保存</button>
+            </form>
+        </section>
+
+        <section id="product-list">
+            <h2>商品一覧</h2>
+            <div>
+                <!-- 商品一覧をここに表示 -->
+                {% for product in products %}
+                    <div class="product-item">
+                        <h3>{{ product.name }}</h3>
+                        <p>価格: ¥{{ product.price }}</p>
+                        <a href="{% url 'product_detail' product.pk %}">詳細を見る</a>
+                    </div>
+                {% empty %}
+                    <p>商品がありません。</p>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+
+</body>
+{% endblock %}

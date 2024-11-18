@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+
+{% block title %}食事検索ページ{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<body>
+<div class="container">
+    <h2 class="title">食事提案のための質問に答えてください</h2>
+
+    <form method="get" class="meal-form">
+        
+        <!-- 質問1: 何人分の食事を作るか -->
+        <div class="question" id="question1">
+            <label for="num_people" class="question-label">今日は何人分ですか？</label><br>
+            <div class="btn-group">
+                <button type="button" class="btn-choice" id="one-person">一人</button>
+                <button type="button" class="btn-choice" id="multiple-people">複数人</button>
+            </div>
+            <input type="hidden" id="num_people" name="num_people" value="1">
+        </div>
+
+        <!-- 質問2: 食べたいジャンル -->
+        <div class="question" id="meal_type_container" style="display: none;">
+            <label for="meal_type" class="question-label">食べたい料理のジャンルは？</label><br>
+            <select name="meal_type" id="meal_type" class="input-select">
+                <option value="和食">和食</option>
+                <option value="洋食">洋食</option>
+                <option value="中華">中華</option>
+                <option value="イタリアン">イタリアン</option>
+                <option value="その他">その他</option>
+            </select>
+        </div>
+
+        <!-- 質問3: 食材の有無 (複数選択式) -->
+        <div class="question" id="ingredients_container" style="display: none;">
+            <label for="ingredients" class="question-label">家にある食材は？（選択してください）</label><br>
+            <div class="checkbox-group">
+                <input type="checkbox" name="ingredients" value="米" id="ingredient_rice"> <label for="ingredient_rice">米</label><br>
+                <input type="checkbox" name="ingredients" value="卵" id="ingredient_egg"> <label for="ingredient_egg">卵</label><br>
+                <input type="checkbox" name="ingredients" value="野菜" id="ingredient_vegetables"> <label for="ingredient_vegetables">野菜</label><br>
+                <input type="checkbox" name="ingredients" value="肉" id="ingredient_meat"> <label for="ingredient_meat">肉</label><br>
+                <input type="checkbox" name="ingredients" value="魚" id="ingredient_fish"> <label for="ingredient_fish">魚</label><br>
+            </div>
+            <button type="button" id="next_ingredients" class="btn-next" style="display: none;">次へ</button>
+        </div>
+
+        <!-- 質問4: 調理方法 -->
+        <div class="question" id="cooking_method_container" style="display: none;">
+            <label for="cooking_method" class="question-label">調理方法はどうしますか？</label><br>
+            <select name="cooking_method" id="cooking_method" class="input-select">
+                <option value="煮る">煮る</option>
+                <option value="焼く">焼く</option>
+                <option value="炒める">炒める</option>
+                <option value="蒸す">蒸す</option>
+            </select>
+        </div>
+
+        <!-- 検索ボタン -->
+        <div class="submit-btn">
+            <button type="submit" class="btn-submit">食事提案を検索</button>
+        </div>
+    </form>
+</div>
+<div class="container">
+    <h2 class="text-area mb-4">エリアを選んでください</h2>
+
+    <!-- エリア選択 -->
+    <div class="area-section card p-4 mb-4">
+        <h3 class="text-center">代表的な県</h3>
+        <ul class="row list-unstyled">
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">東京</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">大阪</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">京都</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">北海道</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">沖縄</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">福岡</a></li>
+        </ul>
+    </div>
+
+    <!-- 全国の都道府県を地域別に表示 -->
+    <div class="region-section card p-4 mb-4">
+        <h3 class="text-center">全国の都道府県</h3>
+        <ul class="list-unstyled">
+            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">北海道・東北</a></li>
+            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">関東</a></li>
+            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">中部</a></li>
+            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">近畿</a></li>
+            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">中国</a></li>
+            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">四国</a></li>
+            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">九州・沖縄</a></li>
+        </ul>
+    </div>
+
+    <!-- ジャンル選択 -->
+    <div class="genre-section card p-4">
+        <h3 class="text-center">ジャンルを選んでください</h3>
+        <ul class="row list-unstyled">
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">カフェ</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">レストラン</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">居酒屋</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">バー</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">ファーストフード</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">その他</a></li>
+
+        </ul>
+    </div>
+</div>
+<!-- area_select.html をここでインクルード -->
+
+<script>
+// 質問1 (食事人数) ボタン
+document.getElementById('one-person').addEventListener('click', function() {
+    document.getElementById('num_people').value = 1;
+    showNextQuestions();
+});
+
+document.getElementById('multiple-people').addEventListener('click', function() {
+    document.getElementById('num_people').value = 2;
+    showNextQuestions();
+});
+// 質問を順番に表示
+function showNextQuestions() {
+    // 質問1を非表示にして次の質問（食べたいジャンル）を表示
+    document.getElementById('question1').style.display = 'none';
+    document.getElementById('meal_type_container').style.display = 'block';
+
+    // 質問2（食べたいジャンル）を選ぶと次の質問（食材）に進む
+    document.getElementById('meal_type').addEventListener('change', function() {
+        document.getElementById('meal_type_container').style.display = 'none';
+        document.getElementById('ingredients_container').style.display = 'block';
+    });
+
+    // 食材を選択した後、「次へ」ボタンを表示する
+    let ingredientsCheckboxes = document.querySelectorAll('#ingredients_container input[type="checkbox"]');
+    let nextButton = document.getElementById('next_ingredients');
+
+    // チェックボックスに変更があったら次ボタンを表示
+    ingredientsCheckboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            let anyChecked = Array.from(ingredientsCheckboxes).some(checkbox => checkbox.checked);
+            nextButton.style.display = anyChecked ? 'inline-block' : 'none';
+        });
+    });
+
+    // 「次へ」ボタンが押されたら、次の質問（調理方法）を表示
+    nextButton.addEventListener('click', function() {
+        document.getElementById('ingredients_container').style.display = 'none';
+        document.getElementById('cooking_method_container').style.display = 'block';
+    });
+}
+</script>
+</body>
+{% endblock %}
