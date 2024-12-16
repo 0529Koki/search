@@ -1,0 +1,41 @@
+.container{
+    width: 850px;
+    margin-top: 50px;
+    border-radius: 10px;
+}
+
+body{
+    background-color: white;
+}
+
+/*野菜類と0000*/
+.a-100{
+    padding: 70px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+/*冷蔵庫の中にあるものは？の全体*/
+.inventory-section{
+    max-width: 70%;
+    margin: auto;
+    background-color: #D9D9D9;
+}
+
+/*自炊*/
+h2{
+    padding: 15px;
+    border-radius: 20px;
+    text-align: center;
+    background-color: #BBB7B7;
+    opacity: 1;/*透明度を設定*/
+    width: 200px;
+    margin: 55px 0 35px 55px;
+    color: #3B3737;
+    
+}
+
+/*上下の間の設定*/
+#product-form{
+    margin: 55px 0 400px 0;
+}

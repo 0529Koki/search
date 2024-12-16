@@ -5,45 +5,30 @@
 {% load static %}
 
 {% block content %}
-       
+
+
+<link rel="stylesheet" href="{% static 'css/meal_planner.css' %}">
+
+
+
 <body>
-
-    <header>
-        <h1>Meal Planner</h1>
-        <nav>
-            <a href="{% url 'product_list' %}">商品一覧</a>
-            <a href="{% url 'product_create' %}">商品作成</a>
-            <a href="{% url 'search_view' %}">検索</a>
-        </nav>
-    </header>
-
     <main>
+        <h2>自炊</h2>
         <section id="product-form">
-            <h2>商品を作成</h2>
-            <form method="post" action="{% url 'product_create' %}">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">保存</button>
-            </form>
-        </section>
-
-        <section id="product-list">
-            <h2>商品一覧</h2>
-            <div>
-                <!-- 商品一覧をここに表示 -->
-                {% for product in products %}
-                    <div class="product-item">
-                        <h3>{{ product.name }}</h3>
-                        <p>価格: ¥{{ product.price }}</p>
-                        <a href="{% url 'product_detail' product.pk %}">詳細を見る</a>
-                    </div>
-                {% empty %}
-                    <p>商品がありません。</p>
-                {% endfor %}
+            <div class="inventory-check">
+                <div class="inventory-section card p-4 mb-4">
+                    <h3 class="text-left">冷蔵庫の中にあるものは？</h3>
+                    <ul class="row list-unstyled">
+                        <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary a-100">野菜類</a></li>
+                        <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary a-100">0000</a></li>
+                        <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary a-100">0000</a></li>
+                        <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary a-100">0000</a></li>
+                        <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary a-100">0000</a></li>
+                        <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary a-100">0000</a></li>
+                    </ul>
+                </div>
             </div>
         </section>
     </main>
-
-
 </body>
 {% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}食事検索ページ{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/store_search.css' %}">
+
+<body>
+    <main>
+        <h2>お店検索</h2>
+        <section id="advanced_search">
+            <div class="search-bar">
+                <div class="search-item">
+                    <label for="area" class="search-label">エリア・駅</label>
+                    <input type="text" id="area" class="search-input" placeholder="例）新宿駅">
+                </div>
+                <div class="search-item">
+                    <label for="genre" class="search-label">ジャンル・目的・店名</label>
+                    <input type="text" id="genre" class="search-input" placeholder="例）居酒屋">
+                </div>
+                <div class="search-item">
+                    <label for="date" class="search-label">予約日</label>
+                    <input type="date" id="date" class="search-input">
+                </div>
+                <div class="search-item">
+                    <label for="people" class="search-label">人数</label>
+                    <input type="number" id="people" class="search-input" placeholder="例）2">
+                </div>
+                <div class="search-item">
+                    <label for="people" class="search-label">時間</label>
+                    <input type="time" id="time" class="search-input">
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+{% endblock %}

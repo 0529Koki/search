@@ -54,7 +54,7 @@ def product_delete(request, pk):
 # 商品一覧ビュー
 def product_list(request):
     products = Product.objects.all()
-    return render(request, 'product_list.html', {'products': products})
+    return render(request, 'store_search.html', {'products': products})
 
 # 検索ビュー（meal_search.html に対応）
 def search_view(request):

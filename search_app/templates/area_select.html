@@ -1,54 +1,37 @@
-{% extends 'base.html' %}
-
-{% block title %}エリアとジャンル選択{% endblock %}
-
-{% load static %}
-
-{% block content %}
-<body>
-    <div class="container py-5">
-        <h2 class="text-center mb-4">エリアを選んでください</h2>
-
-        <!-- エリア選択 -->
-        <div class="area-section card p-4 mb-4">
-            <h3 class="text-center">代表的な県</h3>
-            <ul class="row list-unstyled">
-                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">東京</a></li>
-                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">大阪</a></li>
-                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">京都</a></li>
-                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">北海道</a></li>
-                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">沖縄</a></li>
-                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">福岡</a></li>
-            </ul>
+{% extends 'base.html' %} {% block title %}エリアとジャンル選択{% endblock %} {%
+    block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/area.css' %}" />
+    {% endblock %} {% block content %}
+    <div class="container">
+      <h2>エリアを選んでください</h2>
+      <div class="card-section">
+        <!-- 左: 写真 -->
+        <div class="card-image">
+          <img src="{% static 'images/area.jpg' %}" alt="エリア画像" />
         </div>
-
-        <!-- 全国の都道府県を地域別に表示 -->
-        <div class="region-section card p-4 mb-4">
-            <h3 class="text-center">全国の都道府県</h3>
-            <ul class="list-unstyled">
-                <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">北海道・東北</a></li>
-                <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">関東</a></li>
-                <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">中部</a></li>
-                <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">近畿</a></li>
-                <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">中国</a></li>
-                <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">四国</a></li>
-                <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">九州・沖縄</a></li>
-            </ul>
+        <!-- 右: 都道府県リスト -->
+        <div class="card-content">
+          <h3>代表的な県</h3>
+          <ul>
+            <li><a href="#">東京</a></li>
+            <li><a href="#">大阪</a></li>
+            <li><a href="#">京都</a></li>
+            <li><a href="#">北海道</a></li>
+            <li><a href="#">沖縄</a></li>
+            <li><a href="#">福岡</a></li>
+          </ul>
+          <h3>全国の都道府県</h3>
+          <ul>
+            <li><a href="#">北海道・東北</a></li>
+            <li><a href="#">関東</a></li>
+            <li><a href="#">中部</a></li>
+            <li><a href="#">近畿</a></li>
+            <li><a href="#">中国</a></li>
+            <li><a href="#">四国</a></li>
+            <li><a href="#">九州・沖縄</a></li>
+          </ul>
         </div>
-
-        <!-- ジャンル選択 -->
-        <div class="genre-section card p-4">
-            <h3 class="text-center">ジャンルを選んでください</h3>
-            <ul class="row list-unstyled">
-                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">カフェ</a></li>
-                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">レストラン</a></li>
-                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">居酒屋</a></li>
-                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">バー</a></li>
-                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">ファーストフード</a></li>
-                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">その他</a></li>
-
-            </ul>
-        </div>
+      </div>
     </div>
-</body>
-{% endblock %}
+    {% endblock %}
+    

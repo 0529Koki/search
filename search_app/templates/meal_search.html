@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
-
 {% block title %}食事検索ページ{% endblock %}
 
 {% load static %}
 
 {% block content %}
-<body>
+
+    <link rel="stylesheet" href="{% static 'css/meal_search.css' %}">
+
+  
+<main>
 <div class="container">
     <h2 class="title">食事提案のための質問に答えてください</h2>
 
@@ -15,8 +18,8 @@
         <div class="question" id="question1">
             <label for="num_people" class="question-label">今日は何人分ですか？</label><br>
             <div class="btn-group">
-                <button type="button" class="btn-choice" id="one-person">一人</button>
-                <button type="button" class="btn-choice" id="multiple-people">複数人</button>
+                <button type="button" class="btn-submit" id="one-person">一人</button>
+                <button type="button" class="btn-submit" id="multiple-people">複数人</button>
             </div>
             <input type="hidden" id="num_people" name="num_people" value="1">
         </div>
@@ -63,51 +66,69 @@
         </div>
     </form>
 </div>
-<div class="container">
-    <h2 class="text-area mb-4">エリアを選んでください</h2>
+
+<div class="container2">
+    <h2 class="text-area mb-4">エリアから見つける</h2>
 
     <!-- エリア選択 -->
     <div class="area-section card p-4 mb-4">
         <h3 class="text-center">代表的な県</h3>
         <ul class="row list-unstyled">
-            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">東京</a></li>
-            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">大阪</a></li>
-            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">京都</a></li>
-            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">北海道</a></li>
-            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">沖縄</a></li>
-            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-100">福岡</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-101" id="one">東京</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-101" id="two">大阪</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-101" id="three">京都</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-101" id="four">北海道</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-101" id="five">沖縄</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-primary w-101" id="six">福岡</a></li>
         </ul>
-    </div>
 
     <!-- 全国の都道府県を地域別に表示 -->
-    <div class="region-section card p-4 mb-4">
-        <h3 class="text-center">全国の都道府県</h3>
         <ul class="list-unstyled">
-            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">北海道・東北</a></li>
-            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">関東</a></li>
-            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">中部</a></li>
-            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">近畿</a></li>
-            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">中国</a></li>
-            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">四国</a></li>
-            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-100">九州・沖縄</a></li>
+            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-102">北海道・東北
+                <button class="region-list__button btn" id="Hokkaido">
+                    北海道
+                </button>|</a>
+            </li>
+            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-102">関東</a></li>
+            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-102">中部</a></li>
+            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-102">近畿</a></li>
+            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-102">中国</a></li>
+            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-102">四国</a></li>
+            <li class="text-center mb-3"><a href="#" class="btn btn-outline-secondary w-102">九州・沖縄</a></li>
         </ul>
     </div>
 
     <!-- ジャンル選択 -->
+<div class="container3">
     <div class="genre-section card p-4">
-        <h3 class="text-center">ジャンルを選んでください</h3>
+        <h3 class="text-center">ジャンル</h3>
         <ul class="row list-unstyled">
-            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">カフェ</a></li>
-            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">レストラン</a></li>
-            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">居酒屋</a></li>
-            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">バー</a></li>
-            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">ファーストフード</a></li>
-            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-100">その他</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-103" id="cafe">カフェ</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-103">レストラン</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-103">居酒屋</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-103">バー</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-103">ファーストフード</a></li>
+            <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-103">その他</a></li>
 
         </ul>
     </div>
 </div>
 <!-- area_select.html をここでインクルード -->
+
+    <!-- 目的・シーン選択 -->
+    <div class="container4">
+        <div class="scene-section card p-4">
+            <h3 class="text-center">目的・シーン</h3>
+            <ul class="row list-unstyled">
+                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-104" id="lunch">ランチ</a></li>
+                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-104">飲み放題</a></li>
+                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-104">個室</a></li>
+                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-104">喫煙可</a></li>
+                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-104">デート</a></li>
+                <li class="col-md-4 text-center mb-3"><a href="#" class="btn btn-outline-success w-104">宴会・飲み会</a></li>
+            </ul>
+        </div>
+    </div>
 
 <script>
 // 質問1 (食事人数) ボタン
@@ -151,5 +172,5 @@ function showNextQuestions() {
     });
 }
 </script>
-</body>
+</main>
 {% endblock %}
